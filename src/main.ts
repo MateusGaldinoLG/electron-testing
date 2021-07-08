@@ -1,17 +1,17 @@
 import {app, BrowserWindow} from "electron";
 import path from "path";
 
-console.log(path.join(__dirname, 'index.html'))
-
 function createWindow(){
     const win = new BrowserWindow({
-        width: 800,
+        width: 1000,
         height: 600,
         webPreferences: {
+            nodeIntegration: true,
             preload: path.join(__dirname, 'preload.js')
         }
     });
 
+    //relative to the root
     win.loadFile('index.html');
 }
 

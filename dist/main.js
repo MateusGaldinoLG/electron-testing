@@ -5,15 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var electron_1 = require("electron");
 var path_1 = __importDefault(require("path"));
-console.log(path_1.default.join(__dirname, 'index.html'));
 function createWindow() {
     var win = new electron_1.BrowserWindow({
-        width: 800,
+        width: 1000,
         height: 600,
         webPreferences: {
+            nodeIntegration: true,
             preload: path_1.default.join(__dirname, 'preload.js')
         }
     });
+    //relative to the root
     win.loadFile('index.html');
 }
 electron_1.app.whenReady().then(function () {
